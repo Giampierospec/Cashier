@@ -13,6 +13,7 @@ function checkQuantity(){
     }
     else{
       btnAccept.disabled = true;
+      quantity.disabled = true;
         var r = new qt(qtValue);
         save(r);
         $(".jumbotron").append("<i class='fa fa-spinner fa-spin fa-3x'></i>");

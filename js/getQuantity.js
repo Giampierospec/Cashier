@@ -12,6 +12,13 @@ function loadData(){
   if(data != null){
     quantity = JSON.parse(data);
     qtEstablished.value = quantity.quantity;
+    if(quantity.quantity == 0){
+      rtBtn.disabled = true;
+      qt.disabled = true;
+      $(validationSummary).show().html("Su monto se acabo");
+      $(".jumbotron").append("<i class='fa fa-3x fa-spinner fa-spin'></i>");
+      setTimeout(rtPage,5000);
+    }
   }
 }
 function checkRetrieval(){
@@ -25,11 +32,13 @@ function checkRetrieval(){
   }
   else if(qEstablished == 0){
     rtBtn.disabled = true;
+    qt.disabled = true;
     $(validationSummary).show().html("Su monto se acabo");
     $(".jumbotron").append("<i class='fa fa-3x fa-spinner fa-spin'></i>");
     setTimeout(rtPage,5000);
   }
   else{
+      qt.disabled = true;
       rtBtn.disabled = true;
       quantity.quantity -= q;
       var r = new quant(quantity.quantity);
@@ -62,6 +71,17 @@ $(document).ready(function() {
     else{
       rtBtn.disabled = true;
     }
+  });
+  $("#quantityEstablished").on("input", function(){
+    var input = $(this);
+    var is_qt_est = input.val();
+    if(is_qt_est == 0){
+      rtBtn.disabled = true;
+      $(validationSummary).show().html("Su monto se acabo");
+      $(".jumbotron").append("<i class='fa fa-3x fa-spinner fa-spin'></i>");
+      setTimeout(rtPage,5000);
+    }
+
   });
 });
 
