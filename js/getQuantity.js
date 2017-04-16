@@ -1,6 +1,7 @@
 var quantity;
 var qtEstablished = document.getElementById("quantityEstablished");
 var validateQuantity = document.getElementById("validateQuantity");
+var validationSummary = document.getElementById("validationSummary");
 var rtBtn = document.getElementById("rtBtn");
 var qt = document.getElementById("quantity");
 function quant(q){
@@ -22,6 +23,12 @@ function checkRetrieval(){
   else if(q > qEstablished){
     $(validateQuantity).show().html("El monto que usted introdujo sobrepasa los limites intente denuevo");
   }
+  else if(qEstablished == 0){
+    rtBtn.disabled = true;
+    $(validationSummary).show().html("Su monto se acabo");
+    $(".jumbotron").append("<i class='fa fa-3x fa-spinner fa-spin'></i>");
+    setTimeout(rtPage,5000);
+  }
   else{
       rtBtn.disabled = true;
       quantity.quantity -= q;
@@ -32,6 +39,9 @@ function checkRetrieval(){
       setTimeout(reload,5000);
 
   }
+}
+function rtPage(){
+  window.open("index.html","_self");
 }
 function reload(){
   location.reload();
@@ -46,6 +56,7 @@ $(document).ready(function() {
     var is_quantity = input.val();
     if(is_quantity){
       $(validateQuantity).hide();
+      $(validationSummary).hide();
       rtBtn.disabled = false;
     }
     else{

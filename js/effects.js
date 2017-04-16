@@ -1,3 +1,3 @@
 $(document).ready(function() {
-  $(".jumbotron").hide().addClass("animated BounceInDown");
+  $(".jumbotron").show().addClass("animated bounceInDown");
 });
