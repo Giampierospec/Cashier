@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<!-- Latest compiled and minified JavaScript -->
+<!-- JQuery-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.15.1/jquery.validate.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://use.fontawesome.com/01d9e54a7d.js"></script>
+<link rel="stylesheet" href="css/main.css">
+  <title>Retirar</title>
+</head>
+<body>
+  <div class="container-fluid text-center">
+    <div class="row margin-details">
+      <div class="col-sm-6 col-sm-offset-3">
+        <h2>Retirar</h2>
+        <div class="jumbotron jb-blank">
+          <div class="row">
+            <div class="col-sm-6 col-sm-offset-3">
+                <form id="form" class="form-horizontal" name="form-quantity">
+                    <div class="form-group input-group">
+                      <label for="quantityEstablished" class="input-group-addon">Dinero Restante</label>
+                      <input type="number" step="0.01" class="form-control" id="quantityEstablished" name="quantityEstablished" disabled/>
+                    </div>
+                  <div class="form-group input-group">
+                    <label for="quantity" class="input-group-addon"><i class="fa fa-dollar"></i></label>
+                    <input type="number" step="0.01"class="form-control" id="quantity" name="quantity" placeholder="Introduzca una cantidad"/>
+                    <span class="text-danger" id="validateQuantity"></span>
+                  </div>
+                  <div>
+                    <button type="button" id="rtBtn" class="btn btn-success btn-large"><i class="fa fa-money fa-3x"></i></button>
+                  </div>
+                </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="navbar navbar-inverse navbar-fixed-bottom">
+      <h2>&copy; Giampiero Specogna <span class="text-info" id="date"></span></h2>
+    </footer>
+  </div>
+
+  <script src="js/date.js"></script>
+  <script src="js/getQuantity.js"></script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+var quantity;
+var qtEstablished = document.getElementById("quantityEstablished");
+var validateQuantity = document.getElementById("validateQuantity");
+var rtBtn = document.getElementById("rtBtn");
+var qt = document.getElementById("quantity");
+function quant(q){
+  this.quantity = q;
+}
+function loadData(){
+  var data = localStorage.getItem("quantity");
+  if(data != null){
+    quantity = JSON.parse(data);
+    qtEstablished.value = quantity.quantity;
+  }
+}
+function checkRetrieval(){
+  var q = qt.value;
+  var qEstablished = qtEstablished.value;
+  if(q == null || q == ""){
+    $(validateQuantity).show().html("Campo vacio llenelo");
+  }
+  else if(q > qEstablished){
+    $(validateQuantity).show().html("El monto que usted introdujo sobrepasa los limites intente denuevo");
+  }
+  else{
+      rtBtn.disabled = true;
+      quantity.quantity -= q;
+      var r = new quant(quantity.quantity);
+      console.log(r);
+      save(r);
+      $(".jumbotron").append("<i class='fa fa-3x fa-spinner fa-spin'></i>");
+      setTimeout(reload,5000);
+
+  }
+}
+function reload(){
+  location.reload();
+}
+function save(r){
+  var data = JSON.stringify(r);
+  localStorage.setItem("quantity",data);
+}
+$(document).ready(function() {
+  $("#quantity").on('input',  function() {
+    var input = $(this);
+    var is_quantity = input.val();
+    if(is_quantity){
+      $(validateQuantity).hide();
+      rtBtn.disabled = false;
+    }
+    else{
+      rtBtn.disabled = true;
+    }
+  });
+});
+
+
+
+window.addEventListener("load",loadData);
+rtBtn.addEventListener("click",checkRetrieval);
