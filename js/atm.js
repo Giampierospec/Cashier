@@ -1,7 +1,6 @@
 var btnAccept = document.getElementById("acceptBtn");
 var validateQuantity = document.getElementById('validateQuantity');
 var quantity = document.getElementById("quantity");
-
 function qt(qt){
   this.quantity = qt;
 }
